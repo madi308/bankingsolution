@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "5432:5432"
+    env_file:
+      - docker/env_db.env
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    env_file:
+      - docker/env_rabbit.env
